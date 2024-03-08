@@ -4,6 +4,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     max-width: 100vm;
+    background-color: rgb(233, 233, 233);
 }
 
 code {
