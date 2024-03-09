@@ -7,11 +7,15 @@ import { useState } from 'react';
 import { MessageCard } from '../MessageCard/MessageCard';
 import { ImAttachment } from 'react-icons/im';
 import './HomePage.css';
+import { useNavigate } from 'react-router-dom';
+import { Profile } from '../Profile/Profile';
 
 export const HomePage = () => {
     const [querys, setQuerys] = useState(null);
     const [currentChat, setCurrentChat] = useState(null);
     const [content, setContent] = useState("");
+    const [isProfile, setIsProfile] = useState(false);
+    const navigate = useNavigate();
 
     const handleClickOnChatCard = () => {
         setCurrentChat(true)
@@ -23,6 +27,11 @@ export const HomePage = () => {
 
     const handleCreateNewMessage = () => {
 
+
+    }
+
+    const handleNavigate = () => {
+        setIsProfile(true)
     }
 
     return (
@@ -30,18 +39,25 @@ export const HomePage = () => {
             <div className='w-full py-14 bg-[#00a884]'></div>
             <div className='flex bg-[#f0f2f5] h-[90vh] absolute left-[2vw] top-[5vh] w-[96vw]'>
                 <div className='left w-[30%] bg-[#e8e9ec] h-full'>
-                    <div className='w-full'>
+                     {/* profile */}
+                     {isProfile && <div className='w-full h-full'> <Profile /></div>}
 
-                        <div className='flex justify-between items-center p-3'>
-                            <div className='flex items-center space-x-3'>
-                                <img className='rounded-full w-10 h-10 cursor-pointer' src="https://cdn.pixabay.com/photo/2023/11/09/19/36/zoo-8378189_1280.jpg" alt="" />
+                   {!isProfile && <div className='w-full'>
+                       
+                        {/* home */}
+                        {<div className='flex justify-between items-center p-3'>
+                            <div onClick={handleNavigate} className='flex items-center space-x-3'>
+                                <img
+                                    className='rounded-full w-10 h-10 cursor-pointer'
+                                    src="https://cdn.pixabay.com/photo/2023/11/09/19/36/zoo-8378189_1280.jpg"
+                                    alt="" />
                                 <p>username</p>
                             </div>
                             <div className='py-3 flex space-x-4 items-center px-3'>
                                 <TbCircleDashed />
                                 <BiCommentDetail />
                             </div>
-                        </div>
+                        </div>}
 
                         <div className='relative flex justify-center items-center bg-white py-4 px-3'>
                             <input
@@ -68,7 +84,7 @@ export const HomePage = () => {
                                     </div>
                                 ))}
                         </div>
-                    </div>
+                    </div>}
                 </div>
 
 
