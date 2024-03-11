@@ -34,27 +34,32 @@ export const HomePage = () => {
         setIsProfile(true)
     }
 
+    const handleCloseOpenProfile = () => {
+        setIsProfile(false);
+    }
+
     return (
         <div className='relative'>
             <div className='w-full py-14 bg-[#00a884]'></div>
             <div className='flex bg-[#f0f2f5] h-[90vh] absolute left-[2vw] top-[5vh] w-[96vw]'>
                 <div className='left w-[30%] bg-[#e8e9ec] h-full'>
-                     {/* profile */}
-                     {isProfile && <div className='w-full h-full'> <Profile /></div>}
+                    {/* profile */}
+                    {isProfile && <div className='w-full h-full'> <Profile handleCloseOpenProfile={handleCloseOpenProfile} /></div>}
 
-                   {!isProfile && <div className='w-full'>
-                       
+                    {!isProfile && <div className='w-full'>
+
                         {/* home */}
                         {<div className='flex justify-between items-center p-3'>
                             <div onClick={handleNavigate} className='flex items-center space-x-3'>
                                 <img
                                     className='rounded-full w-10 h-10 cursor-pointer'
                                     src="https://cdn.pixabay.com/photo/2023/11/09/19/36/zoo-8378189_1280.jpg"
-                                    alt="" />
+                                    alt=""
+                                />
                                 <p>username</p>
                             </div>
-                            <div className='py-3 flex space-x-4 items-center px-3'>
-                                <TbCircleDashed />
+                            <div className='space-x-3 text-2xl flex'>
+                                <TbCircleDashed className='cursor-pointer' onClick={()=>navigate('/status')} />
                                 <BiCommentDetail />
                             </div>
                         </div>}
