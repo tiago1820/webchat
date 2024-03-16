@@ -9,7 +9,6 @@ export const Status = () => {
         navigate(-1);
     }
 
-
     return (
         <div>
             <div className="flex items-center px-[14vw] py-[7vh]">
